@@ -1,0 +1,29 @@
+{
+    "version": 8,
+    "configurePresets": [
+        {
+            "name": "clang",
+            "displayName": "Clang 18.1.8 x86_64-w64-windows-gnu (ucrt64)",
+            "description": "Using compilers: C = C:\\msys64\\ucrt64\\bin\\clang.exe, CXX = C:\\msys64\\ucrt64\\bin\\clang++.exe",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
+                "CMAKE_C_COMPILER": "C:/msys64/ucrt64/bin/clang.exe",
+                "CMAKE_CXX_COMPILER": "C:/msys64/ucrt64/bin/clang++.exe",
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "gcc",
+            "displayName": "gcc 14.2.0-x86_64-w64-windows-gnu (ucrt64)",
+            "description": "Using compilers: C = C:\\msys64\\ucrt64\\bin\\clang.exe, CXX = C:\\msys64\\ucrt64\\bin\\g++++.exe",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
+                "CMAKE_C_COMPILER": "C:/msys64/ucrt64/bin/gcc.exe",
+                "CMAKE_CXX_COMPILER": "C:/msys64/ucrt64/bin/g++.exe",
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        }
+    ]
+}
