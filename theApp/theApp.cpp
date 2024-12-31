@@ -1,37 +1,22 @@
-// LibraryApp.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+// theApp.cpp : This file contains the 'main' function. Program execution begins and ends there.
 
+#include "Mainwindow.h"
+#include <QtWidgets/QApplication>
 #include <iostream>
 #include <vector>
 
-#include "Inventory.h"
-#include "date.h"
 
-int main()
+int main(int argc, char *argv[])
 {
-    std::cout << "Starting Inventory Management Application..." << std::endl; 
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
 
-    Inventory& myInventory = Inventory::getInstance();
-
-    std::cout << "Library has " << myInventory.size() << "items " << std::endl;
-
-    ItemDate date1 = ItemDate(12,21,2021);
-
-    std::cout << "Hello, World\n";
-
-   std::vector<int> V{1, 2, 3, 4, 5};
-   int a = 8;
-
-   for(auto &e : V) {
-      std::cout << e << ' ';
-   }
-   std::cout << '\n';
-
-   std::cout << "a = " << a << '\n';
-
-    std::cout << "Closing Inventory Management Application" << std::endl;
-
+    return a.exec();
 }
+
+
+
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
