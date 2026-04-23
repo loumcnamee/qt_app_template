@@ -1,6 +1,6 @@
 // theApp.cpp : This file contains the 'main' function. Program execution begins and ends there.
 
-#include "Mainwindow.h"
+#include "MainWindow.h"
 #include <QtWidgets/QApplication>
 #include <iostream>
 #include <vector>
