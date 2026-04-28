@@ -19,6 +19,14 @@ public:
     bool isRunning() const { return m_timer.isActive(); }
     void freeze()    { m_model.zeroVelocity(); }
 
+    void setCount(int n)
+    {
+        m_model.setCount(n);
+        if (width() > 0 && height() > 0)
+            m_model.init(width(), height());
+    }
+    int  count() const { return m_model.count(); }
+
 signals:
     /// Emitted every tick with the kinetic energy of each ball (same order as model::balls()).
     void kineticEnergiesUpdated(QVector<double> energies);
