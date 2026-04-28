@@ -14,6 +14,8 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QSpinBox>
+#include <QtWidgets/QLabel>
 #include <QtCore/QVector>
 #include <QtGui/QResizeEvent>
 #include "BouncingLinesWidget.h"
@@ -35,6 +37,8 @@ public slots:
     void onStopClicked();
     void onFreezeClicked();
     void updateKETable(QVector<double> energies);
+    void onLinesCountChanged(int value);
+    void onBallsCountChanged(int value);
 protected:
     void resizeEvent(QResizeEvent *event) override;
 private:
@@ -59,6 +63,10 @@ private:
     QRadioButton        *m_radioBalls;
     QButtonGroup        *m_modeGroup;
     QTableWidget        *m_keTable;
+    QSpinBox            *m_linesCountSpin;
+    QSpinBox            *m_ballsCountSpin;
+    QLabel              *m_linesCountLabel;
+    QLabel              *m_ballsCountLabel;
 };
 
 

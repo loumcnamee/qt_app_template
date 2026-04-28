@@ -115,6 +115,29 @@ void MainWindow::setupUi(QMainWindow *MainWindow)
         connect(m_modeGroup, &QButtonGroup::idClicked,
                 this, &MainWindow::onModeChanged);
 
+        // ── Count spinboxes (one per mode, shown/hidden with mode) ───────────
+        m_linesCountLabel = new QLabel(QString::fromUtf8("Lines:"), verticalLayoutWidget);
+        m_linesCountSpin  = new QSpinBox(verticalLayoutWidget);
+        m_linesCountSpin->setRange(1, 50);
+        m_linesCountSpin->setValue(aLib::BouncingLinesModel::LINE_COUNT);
+        verticalLayout->addWidget(m_linesCountLabel);
+        verticalLayout->addWidget(m_linesCountSpin);
+        connect(m_linesCountSpin, QOverload<int>::of(&QSpinBox::valueChanged),
+                this, &MainWindow::onLinesCountChanged);
+
+        m_ballsCountLabel = new QLabel(QString::fromUtf8("Balls:"), verticalLayoutWidget);
+        m_ballsCountSpin  = new QSpinBox(verticalLayoutWidget);
+        m_ballsCountSpin->setRange(1, 50);
+        m_ballsCountSpin->setValue(aLib::BouncingBallsModel::BALL_COUNT);
+        verticalLayout->addWidget(m_ballsCountLabel);
+        verticalLayout->addWidget(m_ballsCountSpin);
+        connect(m_ballsCountSpin, QOverload<int>::of(&QSpinBox::valueChanged),
+                this, &MainWindow::onBallsCountChanged);
+
+        // Initially show lines controls, hide balls controls
+        m_ballsCountLabel->setVisible(false);
+        m_ballsCountSpin->setVisible(false);
+
         // ── Stacked animation canvas ──────────────────────────────────────────
         m_animStack = new QStackedWidget(centralwidget);
 
@@ -203,6 +226,11 @@ void MainWindow::onModeChanged(int id)
     m_animStack->setCurrentIndex(id);
     // Show the KE table only when Bouncing Balls (id=1) is active
     m_keTable->setVisible(id == 1);
+    // Show the matching count control
+    m_linesCountLabel->setVisible(id == 0);
+    m_linesCountSpin->setVisible(id == 0);
+    m_ballsCountLabel->setVisible(id == 1);
+    m_ballsCountSpin->setVisible(id == 1);
     relayout();
 }
 
@@ -241,6 +269,16 @@ void MainWindow::onFreezeClicked()
 {
     m_bouncingLines->freeze();
     m_bouncingBalls->freeze();
+}
+
+void MainWindow::onLinesCountChanged(int value)
+{
+    m_bouncingLines->setCount(value);
+}
+
+void MainWindow::onBallsCountChanged(int value)
+{
+    m_bouncingBalls->setCount(value);
 }
 
  void MainWindow::retranslateUi(QMainWindow *MainWindow)
