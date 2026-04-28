@@ -51,6 +51,8 @@ public:
     /// set the number of lines to simulate (default is LINE_COUNT) and reserve memory for them.
     void setNumLines(int numLines);
 
+    int numLines() const { return m_numLines; }
+
     /// (Re)seed all lines with random positions and velocities inside [0,w]×[0,h].
     void init(double width, double height);
 
@@ -67,6 +69,7 @@ private:
     static void   bouncePoint(Vec2& pos, Vec2& vel, double width, double height);
 
     std::vector<LineData> m_lines;
+    int                   m_numLines{LINE_COUNT};
 };
 
 } // namespace aLib

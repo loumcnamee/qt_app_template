@@ -53,8 +53,8 @@ BouncingLinesModel::BouncingLinesModel()
 
 void BouncingLinesModel::setNumLines(int numLines)
 {
-    m_lines.reserve(numLines);
-    
+    m_numLines = numLines;
+    m_lines.reserve(static_cast<size_t>(numLines));
 }
 
 void BouncingLinesModel::init(double width, double height)
@@ -62,7 +62,7 @@ void BouncingLinesModel::init(double width, double height)
     if (width <= 0.0 || height <= 0.0) return;  // never wipe valid state with bad dimensions
     m_lines.clear();
 
-    for (int i = 0; i < LINE_COUNT; ++i) {
+    for (int i = 0; i < m_numLines; ++i) {
         LineData ln;
         ln.p1 = { randomDouble(0.0, width),  randomDouble(0.0, height) };
         ln.p2 = { randomDouble(0.0, width),  randomDouble(0.0, height) };
