@@ -5,9 +5,19 @@
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QWidget>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QRadioButton>
+#include <QtWidgets/QStackedWidget>
+#include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QTableWidget>
+#include <QtWidgets/QHeaderView>
+#include <QtCore/QVector>
+#include <QtGui/QResizeEvent>
+#include "BouncingLinesWidget.h"
+#include "BouncingBallsWidget.h"
 
 class MainWindow : public QMainWindow
 {
@@ -20,20 +30,35 @@ public:
 
 public slots:
     void storeContent();
+    void onModeChanged(int id);
+    void onStartClicked();
+    void onStopClicked();
+    void onFreezeClicked();
+    void updateKETable(QVector<double> energies);
+protected:
+    void resizeEvent(QResizeEvent *event) override;
 private:
+    void relayout();
     QPushButton *m_button;
     QWidget *centralwidget;
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
     QPushButton *pushButton_5;
     QPushButton *pushButton_3;
-    QPushButton *pushButton;
+    QPushButton *freezeButton;
     QPushButton *pushButton_6;
     QSpacerItem *verticalSpacer;
     QPushButton *pushButton_4;
     QPushButton *pushButton_2;
     QMenuBar *menubar;
     QStatusBar *statusbar;
+    QStackedWidget      *m_animStack;
+    BouncingLinesWidget *m_bouncingLines;
+    BouncingBallsWidget *m_bouncingBalls;
+    QRadioButton        *m_radioLines;
+    QRadioButton        *m_radioBalls;
+    QButtonGroup        *m_modeGroup;
+    QTableWidget        *m_keTable;
 };
 
 
