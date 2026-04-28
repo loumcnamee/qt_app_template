@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-add_library(aLib STATIC InventoryItem.cpp BookItem.cpp MusicItem.cpp Inventory.cpp Date.cpp)
+add_library(aLib STATIC BouncingLinesModel.cpp BouncingBallsModel.cpp)
 
 # Make sure the compiler can find include files for our  library
 # when other libraries or executables link to the library
