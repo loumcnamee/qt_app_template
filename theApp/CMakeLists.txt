@@ -21,10 +21,10 @@ if(WIN32)
 endif()
 
 # Find the QtWidgets library
-find_package(Qt6 COMPONENTS Core Gui Widgets Charts REQUIRED)
+find_package(Qt6 COMPONENTS Core Gui Widgets REQUIRED)
 
 # Tell CMake to create the helloworld executable
 add_executable(theApp theApp.cpp MainWindow.cpp BouncingLinesWidget.cpp BouncingBallsWidget.cpp)
-target_link_libraries(theApp PRIVATE Qt6::Core Qt6::Widgets Qt6::Gui Qt6::Charts aLib)
+target_link_libraries(theApp PRIVATE Qt6::Core Qt6::Widgets Qt6::Gui aLib)
 
 
