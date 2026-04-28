@@ -39,6 +39,10 @@ public:
     /// Only call this when starting fresh; use clampToBounds() on window resize.
     void init(double width, double height);
 
+    /// Set the number of balls to spawn on the next init() call.
+    void setCount(int count) { m_count = count; }
+    int  count() const       { return m_count; }
+
     /// Clamp all ball positions to stay inside the new bounds without changing
     /// velocities, frozen state, or any other model state.
     void clampToBounds(double width, double height);
@@ -80,6 +84,7 @@ private:
 
     std::vector<BallData> m_balls;
     bool                  m_frozen{false};
+    int                   m_count{BALL_COUNT};
 };
 
 } // namespace aLib

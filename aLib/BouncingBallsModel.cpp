@@ -56,7 +56,7 @@ void BouncingBallsModel::init(double width, double height)
     m_frozen = false;
     m_balls.clear();
 
-    for (int i = 0; i < BALL_COUNT; ++i) {
+    for (int i = 0; i < m_count; ++i) {
         BallData b;
         b.radius = ballRandomDouble(MIN_RADIUS, MAX_RADIUS);
         b.pos    = { ballRandomDouble(b.radius, width  - b.radius),
