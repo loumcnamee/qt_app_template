@@ -1,8 +1,12 @@
 # cpp_cmake_template
-A template for C++ projects using CMAKE
+A template for C++ Qt Application project using CMAKE
 
-This repository contains a template for a C++ application using CMake for the build system.
-It includes support to build a static library containing classes, a google test project that test the library and an application that uses the library classes.
+This repository contains a template for a Qt C++ application using CMake for the build system.
+It includes support to build a static library containing classes, a google test project that test the library and an application that uses the library classes with a Qt based GUI.
+
+![GUI in Bouncing Balls Mode](qt_app_template_balls.png)
+
+
 
 ## Organization
 
@@ -30,6 +34,8 @@ You will need the following tools to build this project
 
 ## Helpful References
  https://cmake.org/cmake/help/latest/
+
  https://code.visualstudio.com/docs/cpp/cmake-quickstart
+
  https://google.github.io/googletest/
  
